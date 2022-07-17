@@ -37,6 +37,7 @@ public class BaseTest {
 
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setDeviceName("Pixel_2_XL_API_30");
+		options.setChromedriverExecutable("/Users/kmieshkov/Projects/IdeaProjects/appium-General-Store/src/test/resources/chromedriver");
 		options.setApp("/Users/kmieshkov/Projects/IdeaProjects/appium-General-Store/src/test/resources/General-Store.apk");
 
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
