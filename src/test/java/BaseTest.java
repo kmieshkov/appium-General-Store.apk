@@ -1,4 +1,5 @@
 import com.google.common.collect.ImmutableMap;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -7,6 +8,9 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -53,6 +57,11 @@ public class BaseTest {
 				"direction", direction,
 				"percent", percent
 		));
+	}
+
+	public void waitForElementAttributeToBeEqual(String elementId, String attribute, String value) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.attributeContains(driver.findElement(AppiumBy.id(elementId)), attribute, value));
 	}
 
 	@AfterClass

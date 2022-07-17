@@ -19,6 +19,10 @@ public class TC_2 extends BaseTest {
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + country + "\"))"));
 		driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text='" + country + "']")).click();
 		driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/btnLetsShop")).click();
+
+		// wait for the title to be equal Products
+		waitForElementAttributeToBeEqual("com.androidsample.generalstore:id/toolbar_title", "text", "Products");
+
 		String title = driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/toolbar_title")).getText();
 		Assert.assertEquals(title, "Products");
 		Thread.sleep(3000);
@@ -53,6 +57,9 @@ public class TC_2 extends BaseTest {
 		// go to cart
 		driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
 
+		// wait for the title to be equal Cart
+		waitForElementAttributeToBeEqual("com.androidsample.generalstore:id/toolbar_title", "text", "Cart");
+
 		String title = driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/toolbar_title")).getText();
 		// verify title in the cart
 		Assert.assertEquals(title, "Cart");
@@ -60,8 +67,8 @@ public class TC_2 extends BaseTest {
 	}
 
 	@Test(dependsOnMethods = {"goToCart"})
-	public void verifyItemInTheCart() throws InterruptedException {
-		//verify item in the cart
+	public void verifyItemName() throws InterruptedException {
+		//verify item name in the cart
 		String actual = driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/productName")).getText();
 		Assert.assertEquals(actual, needed);
 		Thread.sleep(3000);
