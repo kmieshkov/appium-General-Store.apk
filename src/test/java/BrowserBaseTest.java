@@ -44,6 +44,8 @@ public class BrowserBaseTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 
+
+
 	@AfterClass
 	public void TearDown() {
 		driver.quit();
