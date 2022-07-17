@@ -46,7 +46,7 @@ public class TC_2 extends BaseTest {
 			}
 		}
 
-		// verify amount in the cart
+		// verify count in the cart
 		String cartCount = driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/counterText")).getText();
 		Assert.assertEquals(cartCount, "1");
 		Thread.sleep(3000);

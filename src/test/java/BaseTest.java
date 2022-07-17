@@ -60,8 +60,8 @@ public class BaseTest {
 	}
 
 	public void waitForElementAttributeToBeEqual(String elementId, String attribute, String value) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.attributeContains(driver.findElement(AppiumBy.id(elementId)), attribute, value));
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait2.until(ExpectedConditions.attributeContains(AppiumBy.id(elementId), attribute, value));
 	}
 
 	@AfterClass
