@@ -2,16 +2,16 @@ import io.appium.java_client.AppiumBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC_3 extends BaseTest {
+public class TC_4 extends BaseTest {
 
 	private final String country = "Argentina";
 	private final String item1 = "Jordan 6 Rings";
 	private final String item2 = "Air Jordan 4 Retro";
 
 	// positive test
-	// verify amount in the cart
+	// review Term and COnditions
 	@Test
-	public void verifyCartAmount() throws InterruptedException {
+	public void verifyAlertTitle() throws InterruptedException {
 		driver.hideKeyboard();
 		driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/nameField")).sendKeys("First Last");
 		driver.findElement(AppiumBy.xpath("//android.widget.RadioButton[@text='Female']")).click();
@@ -33,26 +33,9 @@ public class TC_3 extends BaseTest {
 		// wait for the title to be equal Cart
 		waitForElementAttributeToBeEqual("com.androidsample.generalstore:id/toolbar_title", "text", "Cart");
 
-		// add prices
-		double amount = addPrices();
-
-		// format total amount of the cart
-		String price = driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/totalAmountLbl")).getText().replaceAll("[^\\d.]", "");
-		double total = Double.parseDouble(price);
-
-		Assert.assertEquals(amount, total, 0);
-
+		longPressAction(driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/termsButton")));
+		String alertTitle = driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/alertTitle")).getText();
+		Assert.assertEquals(alertTitle, "Terms Of Conditions");
 		Thread.sleep(3000);
-	}
-
-	private double addPrices() {
-		int prices = driver.findElements(AppiumBy.id("com.androidsample.generalstore:id/productPrice")).size();
-		double amount = 0;
-		for (int i = 0; i < prices; i++) {
-			String price = driver.findElements(AppiumBy.id("com.androidsample.generalstore:id/productPrice")).get(i).getText();
-			price = price.replaceAll("[^\\d.]", "");
-			amount += Double.parseDouble(price);
-		}
-		return amount;
 	}
 }

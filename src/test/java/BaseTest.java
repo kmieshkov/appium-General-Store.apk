@@ -60,8 +60,22 @@ public class BaseTest {
 	}
 
 	public void waitForElementAttributeToBeEqual(String elementId, String attribute, String value) {
-		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait2.until(ExpectedConditions.attributeContains(AppiumBy.id(elementId), attribute, value));
+	}
+
+	public void addItemToCart(String item) {
+		// scroll to needed item
+		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + item + "\"))"));
+
+		// Add to cart using loop
+		int itemCount = driver.findElements(AppiumBy.id("com.androidsample.generalstore:id/productName")).size();
+		for (int i = 0; i < itemCount; i++) {
+			String itemName = driver.findElements(AppiumBy.id("com.androidsample.generalstore:id/productName")).get(i).getText();
+			if (itemName.equalsIgnoreCase(item)) {
+				driver.findElements(AppiumBy.id("com.androidsample.generalstore:id/productAddCart")).get(i).click();
+			}
+		}
 	}
 
 	@AfterClass
