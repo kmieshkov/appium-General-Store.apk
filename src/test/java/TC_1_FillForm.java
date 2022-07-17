@@ -1,9 +1,8 @@
 import io.appium.java_client.AppiumBy;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC_1 extends BaseTest {
+public class TC_1_FillForm extends BaseTest {
 
 	// positive test
 	@Test

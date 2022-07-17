@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.appium.java_client.AppiumBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TC_2 extends BaseTest {
+public class TC_2_VerifyItemInCart extends BaseTest {
 
 	private final String country = "Argentina";
 	private final String needed = "Jordan 6 Rings";

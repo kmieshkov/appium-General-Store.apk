@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.Set;
 
-public class TC_5 extends BaseTest {
+public class TC_5_HybridApp extends BaseTest {
 
 	private final String country = "Argentina";
 	private final String item1 = "Jordan 6 Rings";
